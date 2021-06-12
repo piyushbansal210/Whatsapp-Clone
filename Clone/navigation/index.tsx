@@ -7,14 +7,14 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { View  ,StyleSheet} from 'react-native';
-import { EvilIcons } from '@expo/vector-icons';
+import { Octicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { ColorSchemeName } from 'react-native';
 import Colors from "../constants/Colors";
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
-import BottomTabNavigator from './BottomTabNavigator';
+import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -37,19 +37,21 @@ function RootNavigator() {
       headerShown: true, // By fault it is false it should be set true
       headerStyle:{   // for shcanging the header style
         backgroundColor: Colors.light.tint,  
+        shadowOpacity:0,  //for removing the  shadow from the header
+        elevation:0,
       },
       headerTintColor:'white',
       headerTitleAlign:'left',
       headerTitleStyle:{//All the changes in title are changed here
       },
       }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} 
+      <Stack.Screen name="Root" component={MainTabNavigator} 
       options={{
-        title:'Whatsapp',
+        title:'Whatsapp', 
         headerRight:()=>(
           <View style={styles.headerLeftContainer}>
-            <EvilIcons name="search" size={26} color="white" />
-            <MaterialCommunityIcons name="dots-vertical" size={24} color="white" />
+            <Octicons name="search" size={22} color="white" />
+            <MaterialCommunityIcons name="dots-vertical" size={23} color="white" />
           </View>
         )
       }}/>
@@ -58,11 +60,13 @@ function RootNavigator() {
   );
 }
 
+
+//designing the right part of the header home
 const styles = StyleSheet.create({
   headerLeftContainer:{
     flexDirection:'row',
-    marginRight:5,
+    marginRight:10,
     justifyContent:'space-between',
-    
+    width:60
   },
 })

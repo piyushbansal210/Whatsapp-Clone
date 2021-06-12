@@ -16,44 +16,56 @@ import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
-const BottomTab = createMaterialTopTabNavigator<BottomTabParamList>();
+const MainTab = createMaterialTopTabNavigator<BottomTabParamList>(); //changing default name
 
-export default function BottomTabNavigator() {
+export default function MainTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
+    <MainTab.Navigator
       initialRouteName="Chats"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
+      tabBarOptions={{ 
+        activeTintColor: Colors[colorScheme].background,
+        style:{  // for styling navigator
+          backgroundColor:Colors.light.tint,
+          shadowOpacity:20,  //for introducing shadow to the navigator
+          elevation:20,
+        },
+        indicatorStyle:{
+          backgroundColor:Colors[colorScheme].background,
+          height:3,
+        },
+        
+         }}>
+      <MainTab.Screen
         name="Camera"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      <MainTab.Screen
         name="Chats"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      <MainTab.Screen
         name="Status"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-      <BottomTab.Screen
+      <MainTab.Screen
         name="Calls"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
-    </BottomTab.Navigator>
+    </MainTab.Navigator>
   );
 }
 

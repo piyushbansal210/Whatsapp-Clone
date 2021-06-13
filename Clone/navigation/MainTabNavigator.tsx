@@ -30,8 +30,8 @@ export default function MainTabNavigator() {
         activeTintColor: Colors[colorScheme].background,
         style:{  // for styling navigator
           backgroundColor:Colors.light.tint,
-          shadowOpacity:20,  //for introducing shadow to the navigator ios
-          elevation:20,      //for introducing shadow to the navigator android
+          shadowOpacity:10,  //for introducing shadow to the navigator ios
+          elevation:10,      //for introducing shadow to the navigator android
         },
         indicatorStyle:{
           backgroundColor:Colors[colorScheme].background,

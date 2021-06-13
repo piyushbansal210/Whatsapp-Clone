@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
         width:'100%',
         justifyContent:'space-between',
         padding:10,
+        borderBottomWidth:0.3,
+        borderColor:'grey',
+        borderBottomStartRadius:130,
+        borderBottomRightRadius:20
     },
     avatar:{
         width:65,  
@@ -18,6 +22,7 @@ const styles = StyleSheet.create({
     },
     middleContainer:{
         justifyContent:'space-around',
+        
     },
     name:{
         fontWeight:'bold',

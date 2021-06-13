@@ -48,12 +48,13 @@ function RootNavigator() {
       <Stack.Screen name="Root" component={MainTabNavigator} 
       options={{
         title:'Whatsapp', 
-        headerRight:()=>(
-          <View style={styles.headerLeftContainer}>
-            <Octicons name="search" size={22} color="white" />
-            <MaterialCommunityIcons name="dots-vertical" size={23} color="white" />
-          </View>
-        )
+        headerRight:()=>{
+          return(
+            <View style={styles.headerLeftContainer}>
+              <Octicons name="search" size={22} color="white" />
+              <MaterialCommunityIcons name="dots-vertical" size={23} color="white" />
+            </View>
+        )}
       }}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>

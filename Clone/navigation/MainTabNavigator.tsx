@@ -14,7 +14,7 @@ import { Fontisto } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabOneScreen from '../screens/TabOneScreen';
+import ChatScreen from '../screens/ChatScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -52,7 +52,7 @@ export default function MainTabNavigator() {
       />
       <MainTab.Screen
         name="Chats"
-        component={TabTwoNavigator}
+        component={ChatScreen}
         options={{
           //tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -91,7 +91,7 @@ function TabOneNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="TabOneScreen"
-        component={TabOneScreen}
+        component={ChatScreen}
         options={{ headerShown:false }}
       />
     </TabOneStack.Navigator>

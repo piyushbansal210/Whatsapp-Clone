@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
         width:'100%',
         justifyContent:'space-between',
         padding:10,
-        borderBottomWidth:0.3,
-        borderColor:'grey',
+        borderBottomWidth:0.004,
+        borderColor:'#DCDCDC',
         borderBottomStartRadius:130,
         borderBottomRightRadius:20
     },

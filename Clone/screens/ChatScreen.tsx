@@ -14,6 +14,7 @@ export default function TabOneScreen() {
       style={{width:'100%'}}
       data={ChatRooms}
       renderItem={({item})=><ChatListItem chatRoom={item} />}
+      keyExtractor={(item)=>item.id}
       />
     </View>
   );

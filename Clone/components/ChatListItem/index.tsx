@@ -1,9 +1,11 @@
 import React from 'react';
 import { ChatRoom } from '../../types';   // importing the type of props
-import { View, Text ,Image} from 'react-native';
+import { View, Text ,Image,TouchableOpacity} from 'react-native';
+
 import styles from './style'
 import moment from 'moment';
-
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 export  type ChatListItemProps ={// the type is imported into a function type
     chatRoom:ChatRoom;
@@ -11,11 +13,19 @@ export  type ChatListItemProps ={// the type is imported into a function type
 
 // in type script the the props are first mentioned in the type and then as props
 const ChatListItem=(props: ChatListItemProps)=>{ 
-    const {chatRoom}=props; //chatRoom is declared as the values are transfered using it
+    const {chatRoom}=props; //chatRoom is declared as t he values are transfered using it
     const user=chatRoom.users[1];
+    const navigation=useNavigation();
+
+    const onClick=()=>{
+        navigation.navigate('ChatRoom',
+        {name:user.name,
+         image:user.imageUri,
+        })
+    }
 2
     return(
-        <View style={styles.container}>
+        <TouchableWithoutFeedback style={styles.container} onPress={onClick}>
             <View style={styles.leftContainer}>
                 <Image source={{uri: user.imageUri}} style={styles.avatar} />
                 <View style={styles.middleContainer}>
@@ -26,7 +36,7 @@ const ChatListItem=(props: ChatListItemProps)=>{
             <Text style={styles.time}>
                 {moment(chatRoom.lastMessage.createdAt).format("DD/MM/YYYY")}
             </Text>
-        </View>
+        </TouchableWithoutFeedback>
     )
 };
 

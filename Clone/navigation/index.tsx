@@ -6,9 +6,15 @@
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { View  ,StyleSheet} from 'react-native';
+import { View  ,StyleSheet , Image,} from 'react-native';
 import { Octicons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native'
+import { FontAwesome } from '@expo/vector-icons';
+
+import { MaterialIcons } from '@expo/vector-icons';
+
 import { ColorSchemeName } from 'react-native';
 import Colors from "../constants/Colors";
 
@@ -16,6 +22,8 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -32,7 +40,11 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  
+  
   return (
+
+
     <Stack.Navigator screenOptions={{ 
       headerShown: true, // By fault it is false it should be set true
       headerStyle:{   // for shcanging the header style
@@ -47,6 +59,7 @@ function RootNavigator() {
       }}>
       <Stack.Screen name="Root" component={MainTabNavigator} 
       options={{
+
         title:'Whatsapp', 
         headerRight:()=>{
           return(
@@ -56,6 +69,18 @@ function RootNavigator() {
             </View>
         )}
       }}/>
+      <Stack.Screen name="ChatRoom" component={ChatRoomScreen} options={
+        ({ route }) => ({ title: route.params.name,
+          headerRight:()=>{
+            return(
+              <View style={styles.ChatRoomRightContainer}>
+                <FontAwesome name="video-camera" size={24} color="white" />
+                <FontAwesome name="phone" size={24} color="white" />
+                <MaterialCommunityIcons name="dots-vertical" size={23} color="white" />
+              </View>
+            )
+          }
+        })} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
@@ -70,4 +95,16 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     width:60
   },
+  imageHeader:{
+    width:50,
+    height:50,
+    borderRadius:50,
+    marginLeft:100
+  },
+  ChatRoomRightContainer:{
+    marginRight:10,
+    flexDirection:'row',
+    width:110,
+    justifyContent:'space-between',
+  }
 })

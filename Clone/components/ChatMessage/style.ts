@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     },
     messageBox:{
         marginRight:50,
-        backgroundColor:'red',
         borderRadius:5,
         padding:10,
     },

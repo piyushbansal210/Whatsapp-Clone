@@ -24,6 +24,7 @@ import MainTabNavigator from './MainTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import ContactScreen from '../screens/ContactScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -67,7 +68,7 @@ function RootNavigator() {
               <Octicons name="search" size={22} color="white" />
               <MaterialCommunityIcons name="dots-vertical" size={23} color="white" />
             </View>
-        )}
+        )} 
       }}/>
       <Stack.Screen name="ChatRoom" component={ChatRoomScreen} options={
         ({ route }) => ({ title: route.params.name,
@@ -82,6 +83,7 @@ function RootNavigator() {
           }
         })} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen name="Contacts" component={ContactScreen} options={{ title: 'Contacts' }} />
     </Stack.Navigator>
   );
 }
